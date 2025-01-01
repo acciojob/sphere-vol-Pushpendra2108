@@ -13,26 +13,20 @@ label,input{display:block;}
 	<form action="" method="post" id="MyForm">
 	<label for="radius">Radius</label><input type="text" name="radius" id="radius" required>
 	<label for="volume">Volume</label><input type="text" name="volume" id="volume">
-	<input type="submit" value="Calculate" id="submit">    </form>
-	<script type="text/javascript" src="./script.js"></script>
+	<input type="button" value="Calculate" id="submit" onclick="calculateVolume()">    
+    </form>
 
-	 <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('MyForm').addEventListener('submit', function(event) {
-                console.log("Form submitted");  // This should appear in the console when the form is submitted
+	<script type="text/javascript">
+        function calculateVolume() {
+            var radius = parseFloat(document.getElementById('radius').value);
 
-                event.preventDefault(); // Prevent form submission
-
-                var radius = parseFloat(document.getElementById('radius').value);
-
-                if (isNaN(radius) || radius <= 0) {
-                    alert('Enter a positive number for the radius.');
-                    document.getElementById('volume').value = '';
-                } else {
-                    var volume = (4 / 3) * Math.PI * Math.pow(radius, 3); // Simplified cube calculation
-                    document.getElementById('volume').value = volume.toFixed(2);
-                }
-            });
+            if (isNaN(radius) || radius <= 0) {
+                alert('Enter a positive number for the radius.');
+                document.getElementById('volume').value = '';
+            } else {
+                var volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+                document.getElementById('volume').value = volume.toFixed(2);
+            }
         }
     </script>
 </body>
